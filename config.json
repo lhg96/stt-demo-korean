@@ -1,0 +1,244 @@
+{
+  "stt_config": {
+    "model_type": "whisper",
+    "model_name": "base",
+    "language": "ko",
+    "sample_rate": 16000,
+    "chunk_size": 1024,
+    "enable_vad": true,
+    "vad_threshold": 0.5,
+    "silence_timeout": 2.0,
+    "max_speech_duration": 30.0,
+    "enable_noise_gate": true,
+    "noise_gate_threshold": 0.01,
+    "enable_auto_gain": false,
+    "auto_gain_target": 0.3,
+    "processing_options": {
+      "fp16": false,
+      "beam_size": 5,
+      "best_of": 5,
+      "temperature": 0.0,
+      "condition_on_previous_text": true,
+      "initial_prompt": "",
+      "word_timestamps": false,
+      "prepend_punctuations": "\"'¿([{-",
+      "append_punctuations": "\"'.。,，!！?？:：\")]}、",
+      "suppress_blank": true,
+      "suppress_tokens": [-1],
+      "without_timestamps": false,
+      "max_initial_timestamp": 1.0,
+      "word_level_highlights": false
+    }
+  },
+  "audio_config": {
+    "input_device": null,
+    "output_device": null,
+    "channels": 1,
+    "buffer_duration": 5.0,
+    "overlap_duration": 0.5,
+    "format": "int16",
+    "enable_echo_cancellation": false,
+    "enable_noise_suppression": false,
+    "auto_adjust_microphone": true,
+    "microphone_sensitivity": 0.8
+  },
+  "gui_config": {
+    "window": {
+      "width": 1400,
+      "height": 900,
+      "x": 100,
+      "y": 100,
+      "maximized": false,
+      "always_on_top": false,
+      "theme": "dark"
+    },
+    "splitter": {
+      "control_panel_width": 400,
+      "visualizer_width": 800
+    },
+    "fonts": {
+      "default_family": "AppleGothic",
+      "default_size": 9,
+      "result_text_size": 10,
+      "code_family": "Monaco"
+    },
+    "colors": {
+      "primary": "#4CAF50",
+      "background": "#2b2b2b",
+      "surface": "#3c3c3c",
+      "text": "#ffffff",
+      "text_secondary": "#cccccc",
+      "border": "#555555",
+      "accent": "#66BB6A",
+      "warning": "#FF9800",
+      "error": "#F44336"
+    }
+  },
+  "visualization_config": {
+    "waveform": {
+      "enabled": true,
+      "color": "#4CAF50",
+      "line_width": 1.5,
+      "update_interval": 50,
+      "buffer_size": 4096,
+      "y_limit": 1.0
+    },
+    "spectrum": {
+      "enabled": true,
+      "color": "#2196F3",
+      "line_width": 1.0,
+      "fft_size": 1024,
+      "frequency_range": [20, 8000],
+      "log_scale": true,
+      "smoothing": 0.8
+    },
+    "spectrogram": {
+      "enabled": true,
+      "colormap": "inferno",
+      "window_size": 256,
+      "overlap": 128,
+      "frequency_range": [0, 4000],
+      "time_window": 10.0,
+      "dynamic_range": 80
+    },
+    "volume_meter": {
+      "enabled": true,
+      "peak_hold_time": 1.0,
+      "decay_rate": 0.1,
+      "warning_level": 0.8,
+      "clip_level": 0.95
+    }
+  },
+  "output_config": {
+    "text_output": {
+      "enabled": true,
+      "real_time_display": true,
+      "show_confidence": true,
+      "show_timestamps": false,
+      "show_processing_time": false,
+      "max_history": 1000,
+      "auto_scroll": true,
+      "word_wrap": true
+    },
+    "file_output": {
+      "enabled": false,
+      "auto_save": false,
+      "save_interval": 300,
+      "format": "txt",
+      "include_timestamps": false,
+      "include_confidence": false,
+      "output_directory": "./output",
+      "filename_template": "stt_result_%Y%m%d_%H%M%S"
+    },
+    "export_formats": {
+      "txt": true,
+      "json": true,
+      "csv": false,
+      "srt": false,
+      "vtt": false
+    }
+  },
+  "models": {
+    "whisper": {
+      "available_models": [
+        "tiny",
+        "base", 
+        "small",
+        "medium",
+        "large-v1",
+        "large-v2",
+        "large-v3"
+      ],
+      "default_model": "base",
+      "model_path": null,
+      "download_root": "./models/whisper",
+      "device": "auto",
+      "compute_type": "float32"
+    },
+    "vosk": {
+      "model_path": "./vosk-model-small-ko-0.22",
+      "available_models": [
+        {
+          "name": "vosk-model-small-ko-0.22",
+          "language": "ko",
+          "size": "small",
+          "path": "./vosk-model-small-ko-0.22"
+        }
+      ],
+      "default_model": "vosk-model-small-ko-0.22"
+    }
+  },
+  "performance": {
+    "max_threads": 4,
+    "processing_timeout": 30.0,
+    "memory_limit_mb": 2048,
+    "enable_gpu_acceleration": false,
+    "batch_processing": false,
+    "cache_enabled": true,
+    "cache_size_mb": 512
+  },
+  "logging": {
+    "level": "INFO",
+    "console_output": true,
+    "file_output": true,
+    "log_file": "stt_demo.log",
+    "max_file_size_mb": 10,
+    "backup_count": 5,
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "modules": {
+      "audio": "INFO",
+      "stt": "INFO", 
+      "gui": "WARNING",
+      "config": "INFO"
+    }
+  },
+  "hotkeys": {
+    "start_stop_recording": "F1",
+    "pause_resume": "F2",
+    "clear_results": "Ctrl+L",
+    "save_results": "Ctrl+S",
+    "load_config": "Ctrl+O",
+    "toggle_visualization": "F3",
+    "increase_volume": "Ctrl+Up",
+    "decrease_volume": "Ctrl+Down"
+  },
+  "advanced": {
+    "experimental_features": {
+      "real_time_streaming": false,
+      "speaker_identification": false,
+      "emotion_detection": false,
+      "keyword_spotting": false,
+      "noise_profiling": false
+    },
+    "debug": {
+      "enable_debug_mode": false,
+      "save_audio_chunks": false,
+      "show_processing_stats": false,
+      "verbose_logging": false,
+      "benchmark_mode": false
+    },
+    "optimization": {
+      "enable_model_quantization": false,
+      "use_onnx_runtime": false,
+      "optimize_memory_usage": true,
+      "preload_models": false,
+      "parallel_processing": false
+    }
+  },
+  "user_preferences": {
+    "language": "ko",
+    "auto_start_recording": false,
+    "minimize_to_tray": false,
+    "start_with_windows": false,
+    "check_for_updates": true,
+    "send_usage_stats": false,
+    "first_run": true,
+    "last_used_model": "whisper_base",
+    "recent_files": [],
+    "bookmarks": []
+  },
+  "version": "1.0.0",
+  "config_version": "1.0",
+  "last_modified": "2024-11-17T15:30:00Z",
+  "created_by": "STT Demo Application"
+}

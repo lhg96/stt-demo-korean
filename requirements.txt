@@ -1,0 +1,38 @@
+# STT Demo - 음성 인식 데모 애플리케이션
+# 통합 패키지 요구사항
+
+# === 핵심 음성 인식 엔진 ===
+openai-whisper==20231117
+vosk==0.3.44
+
+# === 오디오 처리 ===
+pyaudio==0.2.14
+numpy==1.26.4
+audioread>=2.1.9
+soundfile==0.12.1
+librosa==0.10.1
+
+# === GUI 프레임워크 ===
+PyQt5==5.15.10
+
+# === 시각화 및 차트 ===
+matplotlib==3.8.2
+
+# === 머신러닝 백엔드 ===
+torch>=2.0.0
+torchaudio>=2.0.0
+scipy>=1.2.0
+scikit-learn>=0.20.0
+
+# === 유틸리티 ===
+tqdm
+requests
+more-itertools
+tiktoken
+websockets
+srt
+
+# === 개발 도구 (선택적) ===
+# pytest==7.4.3
+# black==23.12.1
+# flake8==7.0.0
